@@ -18,6 +18,22 @@ body {
     transition: background-color 0.3s linear;
 }
 
+#video-placeholder {
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.6);
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+#backdrop {
+    position: absolute;
+    z-index: -1;
+    width: 130vw;
+    height: 130vh;
+    top: -15vh;
+    left: -15vw;
+    filter: blur(50px);
+}
+
 /* **********************************************
 Basic mechanics
 Hide all paragraphs by default
@@ -25,12 +41,24 @@ Show them when they receive the class 'on'
 Hide them when they receive the class 'off'
 Feel free to adjust the defaults to your needs.
 ********************************************** */
+
+.video-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+}
 #closed-captions {
-    position: absolute;
+    /* position: absolute;
     width: 100%;
     text-align: center;
     bottom: 100px;
     left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 1200px; */
+    margin-top: 25px;
+    height: 100px;
+
 }
 
 #closed-captions p {
@@ -38,9 +66,9 @@ Feel free to adjust the defaults to your needs.
 	transition: .05s;
     position: absolute;
     width: 100%;
-    text-align: center;
     color: white;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
 }
 
 #closed-captions .on {
@@ -57,6 +85,9 @@ Feel free to adjust the defaults to your needs.
 .voice1 {
     position: relative;
     animation: blur-skew 1s infinite linear alternate-reverse;
+    left: 0;
+    text-align: left;
+    font-family: monospace;
 }
 
 .voice1::before {
@@ -86,21 +117,30 @@ Feel free to adjust the defaults to your needs.
 
 .voice2 {
     font-style: italic;
+    right: 0;
+    text-align: right;
 }
 
+.voice3 {
+    text-align: center;
+}
 /* Sounds */
-.sound0 {
-    background-color: black;
+
+.sounds {
+    list-style: none;
+    width: 100%;
+    text-align: center;
+    color: white;
+    position: relative;
 }
 
-.sound9 {
-    animation: high-pitch 41s linear;
+.sounds li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
-.sound10 {
-    background-color: #76ff9a;
-}
-
-.sound11 {
-    background-color: black;
-}
+.sound0 .sounds li:nth-child(1) { opacity: 1; }

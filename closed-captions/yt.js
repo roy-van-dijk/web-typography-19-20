@@ -1,26 +1,73 @@
-var player;
+var foregroundPlayer;
+var backgroundPlayer;
 
 function onYouTubeIframeAPIReady() {
-	player = new YT.Player('video-placeholder', {
+	foregroundPlayer = new YT.Player('video-placeholder', {
 		width: 1200,
 		height: 600,
 		videoId: 'vrP-_T-h9YM',
 		playerVars: {
-			color: 'white',
+            color: 'white'
 			//start: 
 			//autoplay: '1'
 			//playlist: 'taJ60kskkns,FG0fTKAqZ5g'
 		},
 		events: {
-			onReady: initialize
+            onReady: onForegroundReady,
+            onStateChange: onForegroundStateChange
 		}
-	});
+    });
+    backgroundPlayer = new YT.Player('backdrop', {
+		width: 1200,
+		height: 600,
+		videoId: 'vrP-_T-h9YM',
+		playerVars: {
+            color: 'white',
+            disablekb: 1,
+			//start: 
+			//autoplay: '1'
+			//playlist: 'taJ60kskkns,FG0fTKAqZ5g'
+		},
+		events: {
+            onReady: onBackgroundReady,
+            onStateChange: onBackgroundStateChange
+		}
+    });
 }
 
-function initialize(){
-	// Update the controls on load
-	addSpans();
+function onBackgroundReady() {
+    
 }
+
+function onBackgroundStateChange(event) {
+
+}
+
+function onForegroundStateChange(event) {
+    backgroundPlayer.mute();
+
+    backgroundPlayer.seekTo(foregroundPlayer.getCurrentTime() + 0.2);
+
+    switch(event.data) {
+        case YT.PlayerState.PLAYING:
+            backgroundPlayer.playVideo();
+            break;
+        case YT.PlayerState.PAUSED:
+        case YT.PlayerState.BUFFERING:
+        case YT.PlayerState.CUED:
+            backgroundPlayer.pauseVideo();
+            break;
+        case YT.PlayerState.ENDED:
+            backgroundPlayer.stopVideo();
+            break;
+    }
+}
+
+function onForegroundReady(){
+	// Update the controls on load
+    addSpans();
+}
+
 function addSpans(){
 	var ps = document.querySelectorAll('#closed-captions p');
 	var i = 0;
@@ -38,7 +85,7 @@ function addSpans(){
 }
 
 function updateTimerDisplay(){
-	var t = player.getCurrentTime();
+	var t = foregroundPlayer.getCurrentTime();
 	t = Math.floor10(t,-1);
 	// for each paragraph we want to know:
 	// (paragraph number, start time, end time, current time)
@@ -136,4 +183,3 @@ function sTimes(num,soundStarts,curT) {
 		};
 	}
 })();
-
