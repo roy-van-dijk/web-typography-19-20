@@ -216,3 +216,55 @@
         background-color: white;
     }
 }
+
+@keyframes show-item {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes hide-block {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    80% {
+        opacity: 1;
+        visibility: visible;
+    }
+    99% {
+        opacity: 0;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes scanner-bar {
+    0% {
+        transform: translateY(0vh);
+    }
+    50% {
+        transform: translateY(50vh)
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes show-grid {
+    0% {
+        clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+    }
+    100% {
+        clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
