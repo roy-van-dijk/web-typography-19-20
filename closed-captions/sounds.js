@@ -12,7 +12,8 @@ sounds = [
 	32,
     34,
     75,
-	86
+    86,
+    120
 ];
 
 var soundDurations = [

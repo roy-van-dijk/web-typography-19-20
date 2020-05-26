@@ -248,6 +248,26 @@
     }
 }
 
+
+@keyframes hide-block-long {
+    0% {
+        opacity: 1;
+        /* visibility: visible; */
+    }
+    80% {
+        opacity: 1;
+        /* visibility: visible; */
+    }
+    99% {
+        opacity: 1;
+        /* visibility: visible; */
+    }
+    100% {
+        opacity: 0;
+        /* visibility: hidden; */
+    }
+}
+
 @keyframes scanner-bar {
     0% {
         transform: translateY(0vh);
@@ -266,5 +286,50 @@
     }
     100% {
         clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+        transform-style: preserve-3d;
+    }
+    to {
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+    }
+}
+
+@keyframes particles-bg {
+    from {
+        background-color: rgba(255,0,0,0);
+    }
+    to {
+        background-color: rgba(255,0,0,0.2);
+    }
+}
+  
+
+@keyframes buzzer-light {
+    0% {
+        box-shadow: 0 0 40px 0px rgba(255,0,0,0.5);
+    }
+    50% {
+        box-shadow: 0 0 80px 20px rgba(255,0,0,0.9);
+    }
+    100% {
+        box-shadow: 0 0 40px 0px rgba(255,0,0,0.5);
+    }
+}
+
+@keyframes buzzer {
+    0%   { 
+        opacity: 0.2; 
+    }
+    50% { 
+        opacity: 1; 
+    }
+    100% { 
+        opacity: 0.2; 
     }
 }
