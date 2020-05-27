@@ -199,7 +199,6 @@ Feel free to adjust the defaults to your needs.
 .sound8 .sound-visualisations .visual-6 {
     opacity: 1;
     animation: hide-block-long 41.5s 2s forwards;
-    display: none;
 }
 
 .sound11 .sound-visualisations .visual-7 {
@@ -314,11 +313,15 @@ Feel free to adjust the defaults to your needs.
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    animation: particles-bg 41.5s linear forwards;
+    animation: particles-bg 136s linear forwards;
     position: absolute;
     top: 0;
     left: 0;
     transition: opacity 0.5s;
+}
+
+#particles-js {
+    animation: particles-bg 116s linear forwards;
 }
 
 .visual-7 {
